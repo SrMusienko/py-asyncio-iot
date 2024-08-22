@@ -56,14 +56,13 @@ async def main() -> None:
     )
 
     await run_parallel(
-            service.send_msg(sleep_light_off),
-            service.send_msg(sleep_speaker_off),
-            run_sequence(
-                service.send_msg(sleep_toilet_flush),
-                service.send_msg(sleep_toilet_clean),
-            )
+        service.send_msg(sleep_light_off),
+        service.send_msg(sleep_speaker_off),
+        run_sequence(
+            service.send_msg(sleep_toilet_flush),
+            service.send_msg(sleep_toilet_clean),
         )
-
+    )
 
     await run_parallel(
         service.unregister_device(hue_light_id),
